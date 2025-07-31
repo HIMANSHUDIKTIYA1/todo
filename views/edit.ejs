@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+      body {
+            background: #181818;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+           
+        }
+        form {
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 24px 32px;
+            background: #201f1f00;
+            border-radius: 10px;
+            
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #333;
+        }
+        input[type="text"] {
+            padding: 8px 12px;
+            background: #262525;
+            border: 1px solid #4b4b4b97;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            transition: border-color 0.2s;
+        }
+        input[type="text"]:focus {
+            border-color: #0c0c0c;
+            outline: none;
+        }
+        button {
+           
+            width: 40%;
+            
+            background: #cf5c0b;
+            color: #fff;
+            border: none;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #383839;
+        }
+</style>
+<body>
+
+    <form action="/edit" method="post">
+
+        <label for="name">previous name</label>
+        <input type="text" id="name" name="filename" value="<%= filename %>" required>
+        <label for="name">new name</label>
+        <input type="text" id="name" name="newname"  required>
+
+        <button type="submit">Update</button>
+
+       
+    </form>
+
+    
+</body>
+</html>

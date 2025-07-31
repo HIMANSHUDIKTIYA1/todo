@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+      <style>
+        body {
+            background: #181818;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+           
+        }
+        form {
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 24px 32px;
+            background: #201f1f00;
+            border-radius: 10px;
+            
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #333;
+        }
+        input[type="text"] {
+            padding: 8px 12px;
+            background: #262525;
+            border: 1px solid #4b4b4b97;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            transition: border-color 0.2s;
+        }
+        input[type="text"]:focus {
+            border-color: #0c0c0c;
+            outline: none;
+        }
+        button {
+           
+            width: 40%;
+            
+            background: #050606;
+            color: #fff;
+            border: none;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #383839;
+        }
+       
+        
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+  
+    <form action="/submit"  method="post">
+        <label for="name">Title:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="message">Details:</label>
+        <textarea name="message" id="message" required class="border border-gray-700 p-2 rounded "></textarea>
+       
+       <div >
+        <button type="submit">Submit</button>
+        
+        <button id="myDelete"  type="button">Clear</button>
+     
+</div> 
+        
+    </form>
+   
+    <div>
+        <% if(files.length === 0) { %>
+            <div>
+
+                <p class="text-gray-400">No files available.</p>
+            </div>
+           
+        <% } %>
+         <div class="flex flex-wrap gap-4  ">
+        <% files.map((item) => { %>
+            <div class="bg-gray-800 p-4 rounded mb-4 w-[full]">
+                <h2 class="text-lg font-bold text-white"><%= item %></h2>
+                <p class="text-red-400"> 
+              <div class="flex justify-between">
+                 <a href='/files/<%= item %>' class="text-red-500 mr-6">Read more.</a>
+                 <a href='/edit/<%= item %>/' class="text-gray-700 hover:text-blue-500 hover:">edit</a>
+              </div>
+                 </p>
+            </div>
+        <% }) %>
+        
+  </div>
+   <script>
+    const myDelete = document.getElementById('myDelete');
+
+myDelete.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+     window.location.href = '/delete';
+});
+ 
+    </script>
+
+</body>
+</html>
